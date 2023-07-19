@@ -53,7 +53,12 @@ public class GuessNumberBot extends TelegramLongPollingBot {
     }
 
     private boolean isNumeric(String str) {
-        return str.matches("-?\\d+");
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     @Override
